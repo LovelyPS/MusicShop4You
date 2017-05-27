@@ -1,0 +1,262 @@
+@CHARSET "ISO-8859-1";
+
+table {
+    border:none !important;
+    border-spacing: 10px 0 !important;
+    /* override bootstrap default */
+    border-collapse:separate !important;
+}
+body{
+	background-image: url("./resources/images/bg.jpg");
+}
+  
+  td {
+  background: none;
+  padding: 2em;
+  /* for demo only - not a border */
+  outline:1px solid grey;
+}
+footer {
+  background: #061D25;
+  padding: 10px 0;
+  text-align: center;
+}
+footer a {
+  color: #70726F;
+  font-size: 20px;
+  padding: 10px;
+  border-right: 1px solid #70726F;
+  transition: all .5s ease;
+}
+footer a:first-child {
+  border-left: 1px solid #70726F;
+}
+footer a:hover {
+  color: white;
+}
+.gold{
+	color: #FFBF00;
+}
+
+/*********************************************
+					PRODUCTS
+*********************************************/
+
+.product{
+	border: 1px solid #dddddd;
+	height: 321px;
+}
+
+.product>img{
+	max-width: 230px;
+}
+
+.product-rating{
+	font-size: 20px;
+	margin-bottom: 25px;
+}
+
+.product-title{
+	font-size: 20px;
+}
+
+.product-desc{
+	font-size: 14px;
+}
+
+.product-price{
+	font-size: 22px;
+}
+
+.product-stock{
+	color: #74DF00;
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+.product-info{
+		margin-top: 50px;
+}
+
+/*********************************************
+					VIEW
+*********************************************/
+
+.content-wrapper {
+	max-width: 1140px;
+	background: #fff;
+	margin: 0 auto;
+	margin-top: 25px;
+	margin-bottom: 10px;
+	border: 0px;
+	border-radius: 0px;
+}
+
+.container-fluid{
+	max-width: 1140px;
+	margin: 0 auto;
+}
+
+.view-wrapper {
+	float: right;
+	max-width: 70%;
+	margin-top: 25px;
+}
+
+.container {
+	padding-left: 0px;
+	padding-right: 0px;
+	max-width: 100%;
+}
+
+/*********************************************
+				ITEM 
+*********************************************/
+
+.service1-items {
+	padding: 0px 0 0px 0;
+	float: left;
+	position: relative;
+	overflow: hidden;
+	max-width: 100%;
+	height: 321px;
+	width: 130px;
+}
+
+.service1-item {
+	height: 107px;
+	width: 120px;
+	display: block;
+	float: left;
+	position: relative;
+	padding-right: 20px;
+	border-right: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+}
+
+.service1-item > img {
+	max-height: 110px;
+	max-width: 110px;
+	opacity: 0.6;
+	transition: all .2s ease-in;
+	-o-transition: all .2s ease-in;
+	-moz-transition: all .2s ease-in;
+	-webkit-transition: all .2s ease-in;
+}
+
+.service1-item > img:hover {
+	cursor: pointer;
+	opacity: 1;
+}
+
+.service-image-left {
+	padding-right: 50px;
+}
+
+.service-image-right {
+	padding-left: 50px;
+}
+
+.service-image-left > center > img,.service-image-right > center > img{
+	max-height: 155px;
+}
+.dropdown-large {
+  position: static !important;
+}
+.dropdown-menu-large {
+  margin-left: 16px;
+  margin-right: 16px;
+  padding: 20px 0px;
+}
+.dropdown-menu-large > li > ul {
+  padding: 0;
+  margin: 0;
+}
+.dropdown-menu-large > li > ul > li {
+  list-style: none;
+}
+.dropdown-menu-large > li > ul > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.428571429;
+  color: #333333;
+  white-space: normal;
+}
+.dropdown-menu-large > li ul > li > a:hover,
+.dropdown-menu-large > li ul > li > a:focus {
+  text-decoration: none;
+  color: #262626;
+  background-color: #f5f5f5;
+}
+.dropdown-menu-large .disabled > a,
+.dropdown-menu-large .disabled > a:hover,
+.dropdown-menu-large .disabled > a:focus {
+  color: #999999;
+}
+.dropdown-menu-large .disabled > a:hover,
+.dropdown-menu-large .disabled > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  cursor: not-allowed;
+}
+.dropdown-menu-large .dropdown-header {
+  color: #428bca;
+  font-size: 18px;
+}
+@media (max-width: 768px) {
+  .dropdown-menu-large {
+    margin-left: 0 ;
+    margin-right: 0 ;
+  }
+  .dropdown-menu-large > li {
+    margin-bottom: 30px;
+  }
+  .dropdown-menu-large > li:last-child {
+    margin-bottom: 0;
+  }
+  .dropdown-menu-large .dropdown-header {
+    padding: 3px 15px !important;
+  }
+}
+    #custom-search-form {
+        margin:0;
+        margin-top: 5px;
+        padding: 0;
+    }
+ 
+    #custom-search-form .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    #custom-search-form button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }
