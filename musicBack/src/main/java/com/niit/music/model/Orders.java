@@ -1,32 +1,41 @@
 package com.niit.music.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table
-public class Orders
+public class Orders implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="O_ID")
 	private int o_id;
-	@Column private String u_mail;
-	@Column int payment;
-	@Column int orderTotal;
+	private User user;
+	@Column(name="PAYMENT") int payment;
+	@Column(name="ORDER_TOTAL") int orderTotal;
+	
 	/**
 	 * @param o_id
-	 * @param u_mail
+	 * @param user
 	 * @param payment
 	 * @param orderTotal
 	 */
-	public Orders(int o_id, String u_mail, int payment, int orderTotal) {
+	public Orders(int o_id, User user, int payment, int orderTotal) {
 		super();
 		this.o_id = o_id;
-		this.u_mail = u_mail;
+		this.user = user;
 		this.payment = payment;
 		this.orderTotal = orderTotal;
 	}
@@ -43,16 +52,18 @@ public class Orders
 		this.o_id = o_id;
 	}
 	/**
-	 * @return the u_mail
+	 * @return the user
 	 */
-	public String getU_mail() {
-		return u_mail;
+	@ManyToOne 	
+	@JoinColumn(name="U_MAILID")
+	public User getUser() {
+		return user;
 	}
 	/**
-	 * @param u_mail the u_mail to set
+	 * @param user the user to set
 	 */
-	public void setU_mail(String u_mail) {
-		this.u_mail = u_mail;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	/**
 	 * @return the payment
@@ -78,7 +89,6 @@ public class Orders
 	public void setOrderTotal(int orderTotal) {
 		this.orderTotal = orderTotal;
 	}
-	
 	
 	
 

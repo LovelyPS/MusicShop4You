@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,6 +14,7 @@
     <link href="./resources/css/style.css" rel="stylesheet" type="text/css"  />
     <link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+  
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -26,68 +28,26 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav ">
        <li><a href="#">Home</a></li>
-        <li><a href="#">Instruments</a></li>
-        <li><a href="category">Products</a></li>
+        <li><a href="add">Create Category</a></li>
+        <li><a href="categoryList">CategoryList</a></li>
+        <li><a href="supplierList">SupplierList</a></li>
       </ul>
-        
         
        <ul class="nav navbar-nav"> 
 		<li class="dropdown dropdown-large">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Select Category<b class="caret"></b></a>
 				
 				<ul class="dropdown-menu dropdown-menu-large row">
+					
 					<li class="col-sm-3">
 						<ul>
-							<li class="dropdown-header">Indian Musical Instruments</li>
-							<li><a href="#">Available glyphs</a></li>
-							<li class="disabled"><a href="#">How to use</a></li>
-							<li><a href="#">Examples</a></li>
-							<li class="divider"></li>
-							<li class="dropdown-header">Dropdowns</li>
-							<li><a href="#">Example</a></li>
-							<li><a href="#">Aligninment options</a></li>
-							<li><a href="#">Headers</a></li>
-							<li><a href="#">Disabled menu items</a></li>
-						</ul>
-					</li>
-					<li class="col-sm-3">
-						<ul>
-							<li class="dropdown-header">Button groups</li>
-							<li><a href="#">Basic example</a></li>
-							<li><a href="#">Button toolbar</a></li>
-							<li><a href="#">Sizing</a></li>
-							<li><a href="#">Nesting</a></li>
-							<li><a href="#">Vertical variation</a></li>
-							<li class="divider"></li>
-							<li class="dropdown-header">Button dropdowns</li>
-							<li><a href="#">Single button dropdowns</a></li>
-						</ul>
-					</li>
-					<li class="col-sm-3">
-						<ul>
-							<li class="dropdown-header">Input groups</li>
-							<li><a href="#">Basic example</a></li>
-							<li><a href="#">Sizing</a></li>
-							<li><a href="#">Checkboxes and radio addons</a></li>
-							<li class="divider"></li>
-							<li class="dropdown-header">Navs</li>
-							<li><a href="#">Tabs</a></li>
-							<li><a href="#">Pills</a></li>
-							<li><a href="#">Justified</a></li>
-						</ul>
-					</li>
-					<li class="col-sm-3">
-						<ul>
-							<li class="dropdown-header">Navbar</li>
-							<li><a href="#">Default navbar</a></li>
-							<li><a href="#">Buttons</a></li>
-							<li><a href="#">Text</a></li>
-							<li><a href="#">Non-nav links</a></li>
-							<li><a href="#">Component alignment</a></li>
-							<li><a href="#">Fixed to top</a></li>
-							<li><a href="#">Fixed to bottom</a></li>
-							<li><a href="#">Static top</a></li>
-							<li><a href="#">Inverted navbar</a></li>
+<%-- 							<li class="dropdown-header">Select your Category</li>
+							<c:forEach var="clist" items="${list}">
+								<li><a href="${clist.c_id}">${clist.c_name}</a></li>              					
+
+            				</c:forEach> --%>
+							
+							
 						</ul>
 					</li>
 				</ul>
@@ -178,7 +138,7 @@
                             <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
                         </div>  
                         <div class="panel-body" >
-                            <form id="signupform" class="form-horizontal" role="form">
+                            <form id="signupform" method="post" class="form-horizontal" action="registration" >
                                 
                                 <div id="signupalert" style="display:none" class="alert alert-danger">
                                     <p>Error:</p>
@@ -188,42 +148,54 @@
                                 
                                   
                                 <div class="form-group">
-                                    <label for="email" class="col-md-3 control-label">Email</label>
+                                    <label for="mail" class="col-md-3 control-label">Email</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="email" placeholder="Email Address">
+                                        <input type="text" class="form-control" name="mail" placeholder="Email Address" required>
                                     </div>
                                 </div>
                                     
                                 <div class="form-group">
-                                    <label for="firstname" class="col-md-3 control-label">First Name</label>
+                                    <label for="name" class="col-md-3 control-label">Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                                    <label for="age" class="col-md-3 control-label">Age</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                                        <input type="number" class="form-control" name="age" id="age" placeholder="Enter Your Age" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address" class="col-md-3 control-label">Address</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="address" id="address" placeholder="Enter Your Address" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="col-md-3 control-label">Phone Number</label>
+                                    <div class="col-md-9">
+                                        <input type="number" class="form-control" name="phone" id="phone" placeholder="Enter Your Phone Number">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="col-md-3 control-label">Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" name="passwd" placeholder="Password">
+                                        <input type="password" class="form-control" name="passwd" id="passwd" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
                                     </div>
                                 </div>
                                     
                                 <div class="form-group">
-                                    <label for="icode" class="col-md-3 control-label">Confirm Password</label>
+                                    <label for="cpass" class="col-md-3 control-label">Confirm Password</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="icode" placeholder="Re-enter password">
+                                        <input type="password" class="form-control" name="cpass" id="cpass" placeholder="Re-enter password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> Sign Up</button>
+                                        <button id="btn-signup" type="submit" class="btn btn-info"  ><i class="icon-hand-right"></i> Sign Up</button>
                                         
                                     </div>
                                 </div>

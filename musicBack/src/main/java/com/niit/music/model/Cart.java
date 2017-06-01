@@ -1,37 +1,53 @@
 package com.niit.music.model;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table
-public class Cart 
+public class Cart implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="CART_ID")
 	int cart_id;
-	@Column private int s_id;
-	@Column private String u_mail;
-	@Column private int c_price;
-	@Column private int c_quantity;
-	@Column private int c_status;
+    private Supplier supplier;
+	private Product product;
+	@Column(name="C_PRICE")
+    private int c_price;
+	@Column(name="C_QUANTITY")
+    private int c_quantity;
+	@Column(name="C_STATUS")
+	private int c_status;
+	
+	
 	/**
 	 * @param cart_id
-	 * @param s_id
-	 * @param u_mail
+	 * @param supplier
+	 * @param user
+	 * @param product
 	 * @param c_price
 	 * @param c_quantity
 	 * @param c_status
 	 */
-	public Cart(int cart_id, int s_id, String u_mail, int c_price, int c_quantity, int c_status) {
+	public Cart(int cart_id, Supplier supplier, Product product, int c_price, int c_quantity, int c_status) {
 		super();
 		this.cart_id = cart_id;
-		this.s_id = s_id;
-		this.u_mail = u_mail;
+		this.supplier = supplier;
+		this.product = product;
 		this.c_price = c_price;
 		this.c_quantity = c_quantity;
 		this.c_status = c_status;
@@ -39,6 +55,7 @@ public class Cart
 	/**
 	 * @return the cart_id
 	 */
+	
 	public int getCart_id() {
 		return cart_id;
 	}
@@ -49,29 +66,23 @@ public class Cart
 		this.cart_id = cart_id;
 	}
 	/**
-	 * @return the s_id
+	 * @return the supplier
 	 */
-	public int getS_id() {
-		return s_id;
+	@ManyToOne
+    @JoinColumn(name="S_ID")
+	public Supplier getSupplier() {
+		return supplier;
 	}
 	/**
-	 * @param s_id the s_id to set
+	 * @param supplier the supplier to set
 	 */
-	public void setS_id(int s_id) {
-		this.s_id = s_id;
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 	/**
-	 * @return the u_mail
+	 * @return the user
 	 */
-	public String getU_mail() {
-		return u_mail;
-	}
-	/**
-	 * @param u_mail the u_mail to set
-	 */
-	public void setU_mail(String u_mail) {
-		this.u_mail = u_mail;
-	}
+	
 	/**
 	 * @return the c_price
 	 */
@@ -108,6 +119,23 @@ public class Cart
 	public void setC_status(int c_status) {
 		this.c_status = c_status;
 	}
+	/**
+	 * @return the product
+	 */
+	@ManyToOne
+    @JoinColumn(name="P_ID")
+	public Product getProduct() {
+		return product;
+	}
+	/**
+	 * @param product the product to set
+	 */
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	
+	
+	
 	
 
 }

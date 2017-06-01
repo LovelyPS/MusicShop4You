@@ -6,6 +6,7 @@ table {
     /* override bootstrap default */
     border-collapse:separate !important;
 }
+#success_message{ display: none;}
 body{
 	background-image: url("./resources/images/bg.jpg");
 }
