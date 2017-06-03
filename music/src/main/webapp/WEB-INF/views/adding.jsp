@@ -4,15 +4,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>Insert title here</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 <script type="text/javascript" src="./resources/js/jquery.min.js"></script>
-<title>Insert title here</title>
+
 <!--dialog  -->
  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
 <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"
     rel="stylesheet" type="text/css" />
+    
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.js"></script>
 <!--  -->
 <style type="text/css">
 #form1{
@@ -113,8 +118,43 @@ $(document).ready(function() {
 
 </script>
 
-<!-- <script>
-$(function () {
+
+
+
+</head>
+<body>
+<div class="container">
+<%-- <div>
+        <div class="col-md-12 bg-danger">
+            <%@include file="header.jsp" %>
+        </div>
+        <div class="col-md-3 bg-info" style="height: 300px;">
+            <%@include file="footer.jsp" %>
+        </div>
+        <div class="col-md-9 bg-primary" style="height: 300px;">
+            <%@include file="header.jsp" %>
+        </div>
+        <div class="col-md-12 bg-success">
+            <%@include file="footer.jsp" %>
+        </div>
+    </div> --%>
+<jsp:include page="header.jsp"/>
+<div style="float: right;">
+<a href="productList">View Products</a>|<a href="categoryList">View Categories</a>|<a href="supplierList">View Suppliers</a>
+</div>
+<div id="panel1">
+<label id="product"><h1>PRODUCT</h1></label>
+<button id="b3">ADD</button>
+
+<label id="cat"><h1>CATEGORY</h1></label>
+<button id="b1">ADD</button>
+
+<label id="supp"><h1>SUPPLIER</h1></label>
+<button id="b2">ADD</button>
+
+</div>
+<script>
+/* $(function () {
     'use strict';
 
     function confirmDialog(title, message, success) {
@@ -153,47 +193,32 @@ $(function () {
         });
     });
 });
+ */
 
-</script> -->
+ $.confirm({
+	    title: 'Confirm!',
+	    content: 'Simple confirm!',
+	    buttons: {
+	        confirm: function () {
+	            $.alert('Confirmed!');
+	        },
+	        cancel: function () {
+	            $.alert('Canceled!');
+	        },
+	        somethingElse: {
+	            text: 'Something else',
+	            btnClass: 'btn-blue',
+	            keys: ['enter', 'shift'],
+	            action: function(){
+	                $.alert('Something else?');
+	            }
+	        }
+	    }
+	});
+	      
 
-
-</head>
-<body>
-<div class="container">
-<%-- <div>
-        <div class="col-md-12 bg-danger">
-            <%@include file="header.jsp" %>
-        </div>
-        <div class="col-md-3 bg-info" style="height: 300px;">
-            <%@include file="footer.jsp" %>
-        </div>
-        <div class="col-md-9 bg-primary" style="height: 300px;">
-            <%@include file="header.jsp" %>
-        </div>
-        <div class="col-md-12 bg-success">
-            <%@include file="footer.jsp" %>
-        </div>
-    </div> --%>
-<jsp:include page="header.jsp"/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<div id="panel1">
-<label id="product"><h1>PRODUCT</h1></label>
-<button id="b3">ADD</button>
-<label id="cat"><h1>CATEGORY</h1></label>
-<button id="b1">ADD</button>
-<label id="supp"><h1>SUPPLIER</h1></label>
-<button id="b2">ADD</button>
-
-
-
-</div>
+ 
+</script>
 <div id="form1">
 <h2>Category Details</h2>
 <hr/>
@@ -207,7 +232,7 @@ $(function () {
       <label for="pwd">Category Name :</label>
       <input type="text" class="form-control" id="c_name" placeholder="Enter Category Name " name="c_name">
     </div>   
-    <button type="submit" name="submit_purge" id="submit_purge">Purge&nbsp;Logs</button>
+    <button type="submit">ADD</button>
   </form>
 <br/>
 </div>

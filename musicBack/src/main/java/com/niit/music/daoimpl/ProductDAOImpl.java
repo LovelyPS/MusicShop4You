@@ -4,9 +4,11 @@ package com.niit.music.daoimpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -76,6 +78,17 @@ public class ProductDAOImpl implements ProductDAO
 	public void deleteAll() {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	public List<Product> getFilterProducts(int cid)
+	{
+		Session s=sessionFactory.openSession();
+		
+		List<Product> results =s.createQuery("from Product where c_id="+cid).list();
+		s.close();
+		// TODO Auto-generated method stub
+		return results;
 	}
 	
 		

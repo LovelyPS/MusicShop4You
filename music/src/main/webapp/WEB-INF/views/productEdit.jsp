@@ -11,13 +11,10 @@
 
 <div class="container">
 <jsp:include page="header.jsp"/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+<hr/>
+<div style="float: right;">
+<a href="productList">View Products</a>|<a href="categoryList">View Categories</a>|<a href="supplierList">View Suppliers</a>
+</div>
 <br/>
  <h2>Edit Product Details</h2>
 <hr/>

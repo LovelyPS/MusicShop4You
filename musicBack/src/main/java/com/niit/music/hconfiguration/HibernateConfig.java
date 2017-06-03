@@ -46,7 +46,7 @@ public class HibernateConfig
 	        return sessionBuilder.buildSessionFactory();
 	    }
 	    @Autowired
-	    @Bean(name = "dataSource")
+	    @Bean(name = "datasource")
 	    public DataSource dataSource() {
 	        DriverManagerDataSource dataSource = new DriverManagerDataSource();
 	        dataSource.setDriverClassName("org.h2.Driver");

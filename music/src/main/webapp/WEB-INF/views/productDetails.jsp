@@ -18,12 +18,7 @@
 <div class="container">
 <jsp:include page="header.jsp"></jsp:include>
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
 <br/>
 <br/>
 <div class="container-fluid">

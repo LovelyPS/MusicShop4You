@@ -5,7 +5,7 @@
 	 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <head>
 	<meta charset="utf-8" />
-	<title>Supplierddd</title>
+	<title>ProductList</title>
 	<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
 	<script src="./resources/js/jquery.min.js"></script>
 	<script src="./resources/js/bootstrap.min.js"></script>
@@ -17,15 +17,12 @@
 <body>
 <jsp:include page="header.jsp"/>
 <br/>
-<div style="float: right;">
-<a href="productList">View Products</a>|<a href="categoryList">View Categories</a>|<a href="supplierList">View Suppliers</a>
-</div>
-<br/>
+
 <div class="container">
 <div class="row">
    
    <p></p>
-   <h1>Supplier List</h1>   
+   <h1>Products List</h1>   
    <p> </p><p> </p>
    
        <div class="col-md-10 col-md-offset-1">
@@ -45,24 +42,26 @@
                <table class="table table-striped table-bordered table-list">
                  <thead>
                    <tr>
-                       <th><em class="fa fa-cog"></em></th>
+                      
                        <th class="hidden-xs">ID</th>
                        <th>Name</th>
-                                                                                         
+                       <th>Category</th>
+                       <th>Supplier</th>
+                       <th>Price</th>
+                       <th>Image</th>                                                                        
                    </tr> 
                  </thead>
                  <tbody>
                          
-                         <c:forEach items="${list}" var="s">
+                         <c:forEach items="${list}" var="p">
                          <tr>
-                         <td>
-                             <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                             <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                           </td>
-                           <td class="hidden-xs">${s.s_id}</td>
-                           <td>${s.s_name}</td>
-                         
-                           <td><%-- <img src="./resources/uploads/products/${p.imageName}"  class="img-rounded" alt="${p.name }" width="75px" height="50px"/> --%></td>         
+                        
+                           <td class="hidden-xs">${p.p_id}</td>
+                           <td>${p.p_name}</td>
+                           <td>${p.category.c_name}</td>     
+                           <td>${p.supplier.s_name}</td>         
+                           <td>${p.p_price}</td> 
+                           <td><a href="product"><img src="./resources/product/${p.p_image}"  class="img-rounded" alt="${p.p_name }" width="75px" height="50px"/></a></td>         
                            <tr>       
                          </c:forEach>
                        </tbody>

@@ -44,6 +44,8 @@ public class User implements Serializable
 	private Set<Orders> orders;
 	@Column(name="ROLE")
 	private String role;
+	@Column(name="enabled")
+	private boolean enabled;
 	/**
 	 * @param u_mail
 	 * @param u_name
@@ -74,6 +76,16 @@ public class User implements Serializable
 		this.address = address;
 		this.u_password = u_password;
 		this.role = role;
+	}
+
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 

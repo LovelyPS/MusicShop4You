@@ -22,9 +22,6 @@
  <jsp:include page="header.jsp"></jsp:include>
     <hr/>
     <br/>
-    <br/>
-    <br/>
-    <br/>
     
    
    

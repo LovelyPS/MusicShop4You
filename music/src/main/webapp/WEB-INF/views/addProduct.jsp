@@ -15,6 +15,9 @@
 <title>ADD Product</title>
 </head>
 <body>
+<div style="float: right;">
+<a href="productList">View Products</a>|<a href="categoryList">View Categories</a>|<a href="supplierList">View Suppliers</a>
+</div>
 <div class="container">
  <hr/>
   <h2>Product Details</h2>

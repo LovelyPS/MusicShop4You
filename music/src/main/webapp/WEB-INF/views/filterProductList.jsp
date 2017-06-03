@@ -16,13 +16,7 @@
 
 <body>
 <jsp:include page="header.jsp"/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
 <div class="container">
 <div class="row">
    

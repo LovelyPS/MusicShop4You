@@ -11,6 +11,8 @@ import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,7 +23,7 @@ import com.niit.music.model.Category;
 import com.niit.music.model.Product;
 import com.niit.music.model.Supplier;
 
-@MultipartConfig(location="D:/tmp")
+
 @Controller
 public class HomeController {
 	
@@ -44,17 +46,39 @@ public class HomeController {
 	@Autowired
 	ProductDAO productDao;
 	
-	
-	
+	@RequestMapping("/user")
+	public ModelAndView user(){
+		ModelAndView mv=new ModelAndView("index");
+		return mv;
+		
+	}
+	@RequestMapping("/admin")
+	public ModelAndView admin(){
+		ModelAndView mv=new ModelAndView("index");
+		return mv;
+		
+	}
 	
 	@RequestMapping("/")
 	public ModelAndView index() {
 		
 		ModelAndView mv = new ModelAndView("index");	
 		List<Category> c=categoryDao.getAllCategories();
-		mv.addObject("list",c);
+		mv.addObject("catalist",c);
 		return mv;
 	}
+	
+	
+	@RequestMapping("/productFilter")
+	public ModelAndView productListFilter(HttpServletRequest request)
+	{ 
+		List<Product> list=productDao.getFilterProducts(Integer.valueOf(request.getParameter("id")));
+		//List<Product> list=productDao.getProducts();
+		ModelAndView mv = new ModelAndView("productFilter");	
+		mv.addObject("list",list);
+		return mv;
+	}
+	
 	@RequestMapping("/product")
 	public ModelAndView product() {
 		
@@ -66,21 +90,21 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping("/categoryList")
+	@RequestMapping("/admin/categoryList")
 	public ModelAndView categoryList() { 
 		List<Category> c=categoryDao.getAllCategories();
 		ModelAndView mv = new ModelAndView("categoryList");	
 		mv.addObject("list",c);
 		return mv;
 	}	
-	@RequestMapping("/supplierList")
+	@RequestMapping("/admin/supplierList")
 	public ModelAndView supplierList() { 
 		List<Supplier> s=supplierDao.getAllSppliers();
 		ModelAndView mv = new ModelAndView("supplierList");
 		mv.addObject("list",s);
 		return mv;
 	}	
-	@RequestMapping("/productList")
+	@RequestMapping("/admin/productList")
 	public ModelAndView productList()
 	{ 
 		List<Product> list=productDao.getProducts();
@@ -88,7 +112,7 @@ public class HomeController {
 		mv.addObject("list",list);
 		return mv;
 	}
-	@RequestMapping("/add")
+	@RequestMapping("/admin/add")
 	public ModelAndView adding() { 
 		List<Category> list=categoryDao.getAllCategories();
 		List<Supplier> slist=supplierDao.getAllSppliers();
@@ -99,6 +123,12 @@ public class HomeController {
 		mv.addObject("clist", list);
 		
 		return mv;
+	}
+	@ModelAttribute
+	public void addAttributes(Model model)
+	{
+		model.addAttribute("catalist",categoryDao.getAllCategories());
+		
 	}
 	
 	

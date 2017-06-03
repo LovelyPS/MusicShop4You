@@ -4,10 +4,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.music.dao.CategoryDAO;
 import com.niit.music.dao.UserDAO;
 import com.niit.music.model.User;
 
@@ -16,6 +19,8 @@ public class UserController
 {
 	@Autowired
 	UserDAO userDao;
+	@Autowired
+	CategoryDAO cDao;
 	
 	@RequestMapping(value="/registration",method=RequestMethod.POST)
 	public ModelAndView reg(HttpServletRequest request)
@@ -40,5 +45,11 @@ public class UserController
 		ModelAndView mv = new ModelAndView("index");
 		
 		return mv;
+	}
+	@ModelAttribute
+	public void addAttributes(Model model)
+	{
+		model.addAttribute("catalist",cDao.getAllCategories());
+		
 	}
 }

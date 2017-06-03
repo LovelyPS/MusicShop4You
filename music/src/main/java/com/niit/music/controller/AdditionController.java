@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,7 +48,10 @@ public class AdditionController
 	@Autowired
 	ProductDAO productDao;
 	
-	@RequestMapping("/addCategory")
+	
+	
+	
+	@RequestMapping("/admin/addCategory")
 	public ModelAndView addCategory(HttpServletRequest request) 
 	{ 
 		int c_id=Integer.valueOf(request.getParameter("c_id"));
@@ -76,7 +80,7 @@ public class AdditionController
 		mv.addObject("clist", list);
 		return mv;
 	}*/
-	@RequestMapping("/addProducts")
+	@RequestMapping("/admin/addProducts")
 	public ModelAndView addProducts(@RequestParam("file") MultipartFile file ,HttpServletRequest request) 
 	{ 
 		System.out.println("in Products Controller");
@@ -140,7 +144,7 @@ public class AdditionController
 		mv.addObject("clist", list);
 		return mv;
 	}
-	@RequestMapping("/addSupplier")
+	@RequestMapping("/admin/addSupplier")
 	public ModelAndView addSupplier(HttpServletRequest request) 
 	{ 
 		int c_id=Integer.valueOf(request.getParameter("c_id"));
@@ -156,7 +160,7 @@ public class AdditionController
 		mv.addObject("clist", list);
 		return mv;
 	}
-	@RequestMapping(value="/product_delete")
+	@RequestMapping(value="/admin/product_delete")
 	public ModelAndView deleteProduct(HttpServletRequest request){
 		
 		Product p=productDao.findById(Integer.valueOf(request.getParameter("id")));
@@ -167,7 +171,7 @@ public class AdditionController
 	mv.addObject("list",list);
 	return mv;
 	}
-	@RequestMapping(value="/product_edit")
+	@RequestMapping(value="/admin/product_edit")
 	public ModelAndView editProducts(HttpServletRequest request){	
 	int id=Integer.parseInt(request.getParameter("id"));
 	ModelAndView mv=new ModelAndView("productEdit");
@@ -178,7 +182,7 @@ public class AdditionController
 	mv.addObject("clist", list);
 	return mv;
 	}
-	@RequestMapping(value = "/product_update", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/product_update", method = RequestMethod.POST)
 	public  ModelAndView updateProduct(@RequestParam("file") MultipartFile file ,HttpServletRequest request) 
 	{ 
 		System.out.println("in Products Controller");
@@ -234,12 +238,19 @@ public class AdditionController
 		*/
 		List<Category> list=categoryDao.getAllCategories();
 		List<Supplier> slist=supplierDao.getAllSppliers();
-		
+		List<Product> plist=productDao.getProducts();
 	
 		ModelAndView mv = new ModelAndView("productList");
 		mv.addObject("slist", slist);
 		mv.addObject("clist", list);
+		mv.addObject("list", plist);
 		return mv;
+	}
+	@ModelAttribute
+	public void addAttributes(Model model)
+	{
+		model.addAttribute("catalist",categoryDao.getAllCategories());
+		
 	}
 
 }

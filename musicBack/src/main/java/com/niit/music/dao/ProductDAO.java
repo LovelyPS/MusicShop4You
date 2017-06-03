@@ -15,6 +15,7 @@ public interface ProductDAO
 	public void delete(Product p);
 	
 	public List<Product> getProducts();
+	public List<Product> getFilterProducts(int cid);
 	
 	public void deleteAll();
    
