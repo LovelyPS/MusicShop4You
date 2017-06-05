@@ -17,7 +17,7 @@
 <body>
 <jsp:include page="header.jsp"/>
 <div style="float: right;">
-<a href="productList">View Products</a>|<a href="categoryList">View Categories</a>|<a href="supplierList">View Suppliers</a>
+<a style="color:black" href="<c:url value="add"/>" >ADD</a></li><a href="productList">View Products</a>|<a href="categoryList">View Categories</a>|<a href="supplierList">View Suppliers</a>
 </div>
 <div class="container">
 <div class="row">
@@ -34,16 +34,14 @@
                  <div class="col col-xs-6">
                    <h3 class="panel-title">Category Data Table</h3>
                  </div>
-                 <div class="col col-xs-6 text-right">
-                   <button type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
-                 </div>
+                
                </div>
              </div>
              <div class="panel-body">
                <table class="table table-striped table-bordered table-list">
                  <thead>
                    <tr>
-                       <th><em class="fa fa-cog"></em></th>
+                     
                        <th class="hidden-xs">ID</th>
                        <th>Name</th>
                                                                                          
@@ -53,10 +51,7 @@
                          
                          <c:forEach items="${list}" var="c">
                          <tr>
-                         <td>
-                             <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                             <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                           </td>
+                         
                            <td class="hidden-xs">${c.c_id}</td>
                            <td>${c.c_name}</td>
                          

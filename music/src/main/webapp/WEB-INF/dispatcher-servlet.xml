@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/jdbc
         http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
-  <mvc:default-servlet-handler/>
+  
 	<context:component-scan base-package="com.niit.music.controller" />
 	<context:component-scan base-package="com.niit.music"/>
 	

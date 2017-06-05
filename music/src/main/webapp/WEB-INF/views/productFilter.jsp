@@ -33,9 +33,7 @@
                  <div class="col col-xs-6">
                    <h3 class="panel-title">Category Data Table</h3>
                  </div>
-                 <div class="col col-xs-6 text-right">
-                   <button type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
-                 </div>
+                 
                </div>
              </div>
              <div class="panel-body">
@@ -45,7 +43,6 @@
                       
                        <th class="hidden-xs">ID</th>
                        <th>Name</th>
-                       <th>Category</th>
                        <th>Supplier</th>
                        <th>Price</th>
                        <th>Image</th>                                                                        
@@ -57,11 +54,10 @@
                          <tr>
                         
                            <td class="hidden-xs">${p.p_id}</td>
-                           <td>${p.p_name}</td>
-                           <td>${p.category.c_name}</td>     
+                           <td>${p.p_name}</td>   
                            <td>${p.supplier.s_name}</td>         
                            <td>${p.p_price}</td> 
-                           <td><a href="product"><img src="./resources/product/${p.p_image}"  class="img-rounded" alt="${p.p_name }" width="75px" height="50px"/></a></td>         
+                           <td><a href="product?id=${p.p_id}"><img src="./resources/product/${p.p_image}"  class="img-rounded" alt="${p.p_name }" width="75px" height="50px"/></a></td>         
                            <tr>       
                          </c:forEach>
                        </tbody>

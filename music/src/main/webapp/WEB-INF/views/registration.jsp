@@ -43,36 +43,9 @@ $(document).ready(function() {
                     }
                 }
             },
-			 user_name: {
-                validators: {
-                     stringLength: {
-                        min: 8,
-                    },
-                    notEmpty: {
-                        message: 'Please enter your Username'
-                    }
-                }
-            },
-			 user_password: {
-                validators: {
-                     stringLength: {
-                        min: 8,
-                    },
-                    notEmpty: {
-                        message: 'Please enter your Password'
-                    }
-                }
-            },
-			confirm_password: {
-                validators: {
-                     stringLength: {
-                        min: 8,
-                    },
-                    notEmpty: {
-                        message: 'Please confirm your Password'
-                    }
-                }
-            },
+			
+			
+			
             email: {
                 validators: {
                     notEmpty: {
@@ -93,13 +66,7 @@ $(document).ready(function() {
                      }
                 }
             },
-			 department: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please select your Department/Office'
-                    }
-                }
-            },
+			 
                 }
             }
         })
@@ -135,89 +102,31 @@ function check()
 <body>
     <div class="container">
 
-    <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+    <form class="well form-horizontal" action="invoice" method="post"  id="contact_form">
 <fieldset>
 
 <!-- Form Name -->
-<legend><center><h2><b>Registration Form</b></h2></center></legend><br>
+<legend><center><h2><b>Customer Details</b></h2></center></legend><br>
 
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">First Name</label>  
+  <label class="col-md-4 control-label">Name</label>  
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+  <input  name="name" placeholder="Name" class="form-control"  type="text">
     </div>
   </div>
 </div>
 
-<!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label" >Last Name</label> 
+  <label class="col-md-4 control-label" >Shipping Address</label> 
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="last_name" placeholder="Last Name" class="form-control"  type="text">
-    </div>
-  </div>
-</div>
-
-  <div class="form-group"> 
-  <label class="col-md-4 control-label">Department / Office</label>
-    <div class="col-md-4 selectContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="department" class="form-control selectpicker">
-      <option value="">Select your Department/Office</option>
-      <option>Department of Engineering</option>
-      <option>Department of Agriculture</option>
-      <option >Accounting Office</option>
-      <option >Tresurer's Office</option>
-      <option >MPDC</option>
-      <option >MCTC</option>
-      <option >MCR</option>
-      <option >Mayor's Office</option>
-      <option >Tourism Office</option>
-    </select>
-  </div>
-</div>
-</div>
-  
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Username</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="user_name" placeholder="Username" class="form-control"  type="text">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Password</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="user_password" placeholder="Password" class="form-control"  type="password">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Confirm Password</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">
+  <textarea rows="5" cols="40" name="add" required></textarea>
     </div>
   </div>
 </div>
@@ -228,7 +137,7 @@ function check()
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-  <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+  <input name="email" placeholder="E-Mail Address" class="form-control"  type="text" required>
     </div>
   </div>
 </div>
@@ -241,21 +150,18 @@ function check()
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input name="contact_no" placeholder="(639)" class="form-control" type="text">
+  <input name="contact_no" placeholder="(+91)" class="form-control" type="text" required>
     </div>
   </div>
 </div>
+<input type="hidden" name="tot" value="${tot}"/>
 
-<!-- Select Basic -->
-
-<!-- Success message -->
-<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
-
+<h3>Total Amount = ${tot}</h3>
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label"></label>
+ 
   <div class="col-md-4"><br>
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" onlick="check()">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" onlick="check()" value="Confirm">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
   </div>
 </div>
 

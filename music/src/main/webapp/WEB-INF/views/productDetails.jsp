@@ -26,29 +26,36 @@
 		<div class="item-container">	
 			<div class="container">	
 			<br/>
-			<br/><img id="item-display" src="./resources/images/vi.jpg" alt="" width="400" height="400"></img>
+			<br/><img id="item-display" src="./resources/product/${product.p_image}" alt="" width="400" height="400"></img>
 						
 					
 					
 			
 					
 				<div class="col-md-7">
-					<div class="product-title">Carlos Marshello CDV-500 Hand Made Designer Violin</div>
-					<div class="product-desc">Carlos Marshello Violins are hand made violins made of imported and seasoned maple, spruce and ebony woods with a elegant purfled back</div>
+					<div class="product-title">${product.p_name}</div>
+					<div class="product-desc">${product.p_description}</div>
 					<div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
 					<hr>
-					<div class="product-price">₹25,000</div>
+					<div class="product-price">${product.p_price}</div>
 					<div class="product-stock">In Stock</div>
 					<hr>
+					<form action="addCart">
+					Enter Quantity : <input type="number" name="q"/><input type="hidden" name="id" value="${product.p_id}"/>
 					<div class="btn-group cart">
-						<button type="button" class="btn btn-success">
+					   
+						<button type="submit" class="btn btn-success">
 							Add to cart 
 						</button>
+						
 					</div>
+					</form>
 					<div class="btn-group wishlist">
+					<a href="viewCart">
 						<button type="button" class="btn btn-danger">
-							Add to wishlist 
+							View cart 
 						</button>
+						</a>
 					</div>
 				</div>
 			</div> 
@@ -66,15 +73,7 @@
 						<div class="tab-pane fade in active" id="service-one">
 						 
 							<section class="container product-info">
-								Carlos Marshello Violins are hand made violins made of imported and seasoned maple, spruce and ebony woods with a elegant purfled back. The Carlos Marcello CDV Series comes with a handy imported violin case, brazil wood bow, a complete set of imported German Pirastro Strings, Pirastro Rosin Made in England and Fom shoulder rest as a complimentary.
-These Violins are finely crafted by selected and gifted luthiers all over the world who are carrying on a glorious family tradition and heritage of exquisite craftmanship since generations.
-		<h3> Features:</h3>
-								<li>fgdfgh dfg dfgh fgh fgh fgh fgh dghj ty cvb yud vbn drtyu bj tyu h</li>
-								<li>fgdfgh dfg dfgh fgh fgh fgh fgh dghj ty cvb yud vbn drtyu bj tyu h</li>
-								<li>fgdfgh dfg dfgh fgh fgh fgh fgh dghj ty cvb yud vbn drtyu bj tyu h</li>
-								<li>fgdfgh dfg dfgh fgh fgh fgh fgh dghj ty cvb yud vbn drtyu bj tyu h</li>
-								<li>fgdfgh dfg dfgh fgh fgh fgh fgh dghj ty cvb yud vbn drtyu bj tyu h</li>
-								
+																
 							</section>
 										  
 						</div>

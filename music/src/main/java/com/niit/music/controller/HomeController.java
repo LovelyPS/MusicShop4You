@@ -67,6 +67,14 @@ public class HomeController {
 		mv.addObject("catalist",c);
 		return mv;
 	}
+	@RequestMapping("/noAccessPage")
+	public ModelAndView error() {
+		
+		ModelAndView mv = new ModelAndView("noAccessPage");	
+		
+		return mv;
+	}
+	
 	
 	
 	@RequestMapping("/productFilter")
@@ -76,16 +84,21 @@ public class HomeController {
 		//List<Product> list=productDao.getProducts();
 		ModelAndView mv = new ModelAndView("productFilter");	
 		mv.addObject("list",list);
+		List<Category> c=categoryDao.getAllCategories();
+		mv.addObject("catalist",c);
 		return mv;
 	}
 	
 	@RequestMapping("/product")
-	public ModelAndView product() {
+	public ModelAndView product(HttpServletRequest request) 
+	{
 		
-
+        int id=Integer.valueOf(request.getParameter("id"));
+        Product p=productDao.findById(id);
 		ModelAndView mv = new ModelAndView("productDetails");
 		List<Category> c=categoryDao.getAllCategories();
-		mv.addObject("list",c);
+		mv.addObject("catalist",c);
+		mv.addObject("product", p);
 		
 		return mv;
 	}

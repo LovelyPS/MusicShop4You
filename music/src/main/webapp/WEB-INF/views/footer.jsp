@@ -40,11 +40,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Instruments</a></li>
-        <li><a href="#">Plays</a></li>
-        <li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        Search Your need<input type="text" id="search" class="search" placeholder="Search..."/></li>
+        
         <li><a href="#" data-toggle="modal" data-target="#login-modal"><img alt="" src="./resources/images/icon.png" width="20" height="20" /><br/>Sign In</a></li>
         <li> 
         <footer>

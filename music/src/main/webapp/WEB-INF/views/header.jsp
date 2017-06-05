@@ -37,14 +37,14 @@
 			</button>
 
 			<a class="navbar-brand" href="./"> <img
-				src='<c:url value="resources/images/logo.png" />' width="50px"
-				height="25px" class="img-responsive" />
+				src='<c:url value="resources/images/logo1.png" />' width="100px"
+				height="50px" class="img-responsive" />
 			</a>
 		</div>
 
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-
+			<c:if test="${pageContext.request.userPrincipal.name  != 'admin@niit.com'}">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Products <span class="caret"></span></a>
@@ -56,11 +56,21 @@
 						</c:forEach>
 
 					</ul></li>
+					</c:if>
 				<%-- <c:if test="${pageContext.request.userPrincipal.name  == 'admin'}"> --%>
-				<li><a href="<c:url value="add"/>" role="button"
-					aria-haspopup="true" aria-expanded="false">Add</a></li>
+				<%-- <li><a href="<c:url value="admin/add"/>" role="button"
+					aria-haspopup="true" aria-expanded="false">Add</a></li> --%>
 				<%-- </c:if> --%>
 			</ul>
+
+                 <c:if test="${pageContext.request.userPrincipal.name  == 'admin@niit.com'}">
+                          <a style="color:black;" href="<c:url value="admin/add"/>" >ADD</a>    
+                 </c:if>
+                 				<%-- <c:if test="${pageContext.request.userPrincipal.name  == null}">
+                      <a style="color:black" href="<c:url value="admin/add"/>" >ADD</a></li>      
+                 </c:if>
+ --%>
+
 
 
 			<c:if test="${pageContext.request.userPrincipal.name  == 'admin'}">

@@ -14,7 +14,7 @@
     
 </head>
 
-<body>
+<body style="background-image: url('./resoueces/images/bg.jpg');">
 
 
 
@@ -63,16 +63,16 @@
 <table class="table table-bordered table-striped">
 	<tr>
 		<td >
-		<a href="product"><img alt="" src="./resources/images/pi.jpg" width="250" height="250" ></a>
+		<a href="product?id=203"><img alt="" src="./resources/images/pi.jpg" width="250" height="250" ></a>
 		</td>
 		<td >
-		<a href=""><img alt="" src="./resources/images/vi.jpg" width="250" height="250"></a>
+		<a href="product?id=501"><img alt="" src="./resources/images/vi.jpg" width="250" height="250"></a>
 		</td>
 		<td >
-		<a href=""><img alt="" src="./resources/images/v2.jpg" width="250" height="250" ></a>
+		<a href="product?id=501"><img alt="" src="./resources/images/v2.jpg" width="250" height="250" ></a>
 		</td>
 		<td >
-		<a href=""><img alt="" src="./resources/images/v3.jpg" width="250" height="250" ></a>
+		<a href="product?id=401"><img alt="" src="./resources/images/v3.jpg" width="250" height="250" ></a>
 		</td>
 		
 	</tr>

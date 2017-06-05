@@ -118,6 +118,14 @@ $(document).ready(function() {
 
 </script>
 
+<script type="text/javascript">
+function checkButtons()
+{
+	alert("can i take the Data!");
+	
+}
+</script>
+
 
 
 
@@ -153,72 +161,7 @@ $(document).ready(function() {
 <button id="b2">ADD</button>
 
 </div>
-<script>
-/* $(function () {
-    'use strict';
 
-    function confirmDialog(title, message, success) {
-        var confirmdialog = $('<div></div>').appendTo('body')
-            .html('<div><h6>' + message + '</h6></div>')
-            .dialog({
-                modal: true,
-                title: title,
-                zIndex: 10000,
-                autoOpen: false,
-                width: 'auto',
-                resizable: true,
-                buttons: {
-                    Yes: function () {
-                        success();
-                        $(this).dialog("close");
-                    },
-                    No: function () {
-                        $(this).dialog("close");
-                    }
-                },
-                close: function() {
-                    $(this).remove();
-                }
-            });
-
-        return confirmdialog.dialog("open");
-    }
-
-    $('form').on('submit', function (e) {
-        e.preventDefault();
-        var form = this;
-
-        confirmDialog('Confirm', 'Shell i Get the Data? ', function () {
-            form.submit();
-        });
-    });
-});
- */
-
- $.confirm({
-	    title: 'Confirm!',
-	    content: 'Simple confirm!',
-	    buttons: {
-	        confirm: function () {
-	            $.alert('Confirmed!');
-	        },
-	        cancel: function () {
-	            $.alert('Canceled!');
-	        },
-	        somethingElse: {
-	            text: 'Something else',
-	            btnClass: 'btn-blue',
-	            keys: ['enter', 'shift'],
-	            action: function(){
-	                $.alert('Something else?');
-	            }
-	        }
-	    }
-	});
-	      
-
- 
-</script>
 <div id="form1">
 <h2>Category Details</h2>
 <hr/>
@@ -226,13 +169,13 @@ $(document).ready(function() {
   <form id="form_purge" name="form_purge" action="addCategory" >
     <div class="form-group">
       <label for="c_id">Category  ID :</label>
-      <input type="text" class="form-control" id="c_id" placeholder="Enter Category ID" name="c_id">
+      <input type="text" class="form-control" id="c_id" placeholder="Enter Category ID" name="c_id" readonly="true">
     </div>
     <div class="form-group">
       <label for="pwd">Category Name :</label>
-      <input type="text" class="form-control" id="c_name" placeholder="Enter Category Name " name="c_name">
+      <input type="text" class="form-control" id="c_name" placeholder="Enter Category Name " name="c_name" readonly="true">
     </div>   
-    <button type="submit">ADD</button>
+    <button type="submit" >ADD</button>
   </form>
 <br/>
 </div>
@@ -244,13 +187,13 @@ $(document).ready(function() {
   <form action="addSupplier">
     <div class="form-group">
       <label for="c_id">Supplier  ID :</label>
-      <input type="text" class="form-control" id="c_id" placeholder="Enter Supplier ID" name="c_id">
+      <input type="text" class="form-control" id="c_id" placeholder="Enter Supplier ID" name="c_id" required>
     </div>
     <div class="form-group">
       <label for="pwd">Supplier Name :</label>
-      <input type="text" class="form-control" id="c_name" placeholder="Enter Supplier Name " name="c_name">
+      <input type="text" class="form-control" id="c_name" placeholder="Enter Supplier Name " name="c_name" required>
     </div>   
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default" >Submit</button>
   </form>
 </div>
 
@@ -260,26 +203,26 @@ $(document).ready(function() {
   <form action="addProducts"  method="post"  enctype="multipart/form-data">
     <div class="form-group">
       <label for="p_id">Product  ID :</label>
-      <input type="number" class="form-control" id="p_id" placeholder="Enter Product ID" name="p_id">
+      <input type="number" class="form-control" id="p_id" placeholder="Enter Product ID" name="p_id" required>
     </div>
     <div class="form-group">
       <label for="p_name">Product Name :</label>
-      <input type="text" class="form-control" id="p_name" placeholder="Enter Product Name " name="p_name">
+      <input type="text" class="form-control" id="p_name" placeholder="Enter Product Name " name="p_name" required>
     </div>
     <div class="form-group">
       <label for="p_desc">Product Description :</label>
-      <input type="text" class="form-control" id="p_desc" placeholder="Enter Product Description " name="p_desc">
+      <input type="text" class="form-control" id="p_desc" placeholder="Enter Product Description " name="p_desc" required>
     </div>
     <div class="form-group">
       <label for="p_price">Product Price :</label>
-      <input type="number" class="form-control" id="p_price" placeholder="Enter Product Price " name="p_price">
+      <input type="number" class="form-control" id="p_price" placeholder="Enter Product Price " name="p_price" required>
     </div>
     
     
     <div class="form-group">
   <label class="col-md-4 control-label" for="c_id" >Select Category</label>
   <div class="col-md-4">
-    <select id="c_id" class="form-control" name="c_id">
+    <select id="c_id" class="form-control" name="c_id" required>
       <c:forEach var="clist" items="${clist}">
 
                 <option value="${clist.c_id}">${clist.c_name}</option>
@@ -293,7 +236,7 @@ $(document).ready(function() {
 <div class="form-group">
   <label class="col-md-4 control-label" for="s_id" >Select Supplier</label>
   <div class="col-md-4">
-    <select id="s_id" class="form-control" name="s_id">
+    <select id="s_id" class="form-control" name="s_id" required>
       <c:forEach var="slist" items="${slist}">
 
                 <option value="${slist.s_id}">${slist.s_name}</option>
@@ -310,7 +253,7 @@ $(document).ready(function() {
       <label for="img">Upload Image:</label>
       <input type="file" id="img" name="file">
     </div>
-    <button type="submit" class="btn btn-primary" >Save</button>
+    <button type="submit" class="btn btn-primary"  >Save</button>
   </form>
 <br/>
 <br/>
