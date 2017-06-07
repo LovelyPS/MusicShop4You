@@ -6,7 +6,7 @@ import com.niit.music.model.Cart;
 
 public interface CartDAO 
 {
-	 public void persist(Cart p);
+	    public void persist(Cart p);
 		
 		public void update(Cart p);
 		
@@ -17,5 +17,7 @@ public interface CartDAO
 		public List<Cart> getAllCarts();
 		
 		public void deleteAll();
-     
+		
+		public List<Cart> checkExistance(int pid);  
+		
 }

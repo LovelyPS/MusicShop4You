@@ -169,11 +169,11 @@ function checkButtons()
   <form id="form_purge" name="form_purge" action="addCategory" >
     <div class="form-group">
       <label for="c_id">Category  ID :</label>
-      <input type="text" class="form-control" id="c_id" placeholder="Enter Category ID" name="c_id" readonly="true">
+      <input type="text" class="form-control" id="c_id" placeholder="Enter Category ID" name="c_id" required>
     </div>
     <div class="form-group">
       <label for="pwd">Category Name :</label>
-      <input type="text" class="form-control" id="c_name" placeholder="Enter Category Name " name="c_name" readonly="true">
+      <input type="text" class="form-control" id="c_name" placeholder="Enter Category Name " name="c_name" required>
     </div>   
     <button type="submit" >ADD</button>
   </form>
@@ -251,7 +251,7 @@ function checkButtons()
 
 <div class="form-group">
       <label for="img">Upload Image:</label>
-      <input type="file" id="img" name="file">
+      <input type="file" id="img" name="file" required>
     </div>
     <button type="submit" class="btn btn-primary"  >Save</button>
   </form>

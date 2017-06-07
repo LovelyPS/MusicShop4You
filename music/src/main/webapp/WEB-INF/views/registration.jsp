@@ -168,6 +168,8 @@ function check()
 </fieldset>
 </form>
 </div>
-    </div><!-- /.container -->
+    </div>
+    <jsp:include page="footer.jsp"/>
+    <!-- /.container -->
 </body>
 </html>

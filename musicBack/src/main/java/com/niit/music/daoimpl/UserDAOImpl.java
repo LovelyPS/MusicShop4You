@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.music.dao.UserDAO;
+import com.niit.music.model.Cart;
 import com.niit.music.model.Supplier;
 import com.niit.music.model.User;
 
@@ -46,8 +47,10 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		Session s=sessionFactory.openSession();
+		List<User> clist=s.createCriteria(User.class).list();
+		s.clear();
+		return clist;
 	}
 
 	public void deleteAll() {

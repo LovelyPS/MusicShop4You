@@ -15,16 +15,20 @@
 </head>
 
 <body>
+
+<br/>
+<div class="container">
 <jsp:include page="header.jsp"/>
 <div style="float: right;">
 <a style="color:black" href="<c:url value="add"/>" >ADD</a></li>|<a href="productList">View Products</a>|<a href="categoryList">View Categories</a>|<a href="supplierList">View Suppliers</a>
 </div>
-<br/>
-<div class="container">
 <div class="row">
    
    <p></p>
-   <h1>Products List</h1>   
+   <h1>Products List</h1>  
+   <c:if test="${not empty msg}">
+									<div class="msg" style="color: red;">${msg}</div>
+								</c:if> 
    <p> </p><p> </p>
    
        <div class="col-md-10 col-md-offset-1">
@@ -33,7 +37,7 @@
              <div class="panel-heading">
                <div class="row">
                  <div class="col col-xs-6">
-                   <h3 class="panel-title">Category Data Table</h3>
+                   <h3 class="panel-title">Product Data Table</h3>
                  </div>
                  
                </div>
@@ -64,7 +68,7 @@
                            <td>${p.category.c_name}</td>     
                            <td>${p.supplier.s_name}</td>         
                            <td>${p.p_price}</td> 
-                           <td><img src="./resources/product/${p.p_image}"  class="img-rounded" alt="${p.p_name }" width="75px" height="50px"/></td>         
+                           <td><img src="${pageContext.request.contextPath}/resources/product/${p.p_image}"  class="img-rounded" alt="${p.p_name }" width="75px" height="50px"/></td>         
                            <tr>       
                          </c:forEach>
                        </tbody>

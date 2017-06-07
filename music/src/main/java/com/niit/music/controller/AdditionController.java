@@ -155,7 +155,7 @@ public class AdditionController
 		List<Supplier> slist=supplierDao.getAllSppliers();
 		
 	
-		ModelAndView mv = new ModelAndView("adding");
+		ModelAndView mv = new ModelAndView("redirect:/adding");
 		mv.addObject("slist", slist);
 		mv.addObject("clist", list);
 		return mv;
@@ -165,11 +165,20 @@ public class AdditionController
 		
 		Product p=productDao.findById(Integer.valueOf(request.getParameter("id")));
 		System.out.print(p);
-	productDao.delete(p);
-	List<Product> list=productDao.getProducts();
-	ModelAndView mv = new ModelAndView("productList");	
-	mv.addObject("list",list);
-	return mv;
+		ModelAndView mv= new ModelAndView("productList");	
+		try
+		{
+		productDao.delete(p);
+		mv.addObject("msg","Product Deletion Compleated");
+		}
+		catch (Exception e) 
+		{
+			mv.addObject("msg","Product Deletion is not Possible...Because, It is already in a Cart");
+		}
+		
+		List<Product> list=productDao.getProducts();
+		mv.addObject("list",list);
+		return mv;
 	}
 	@RequestMapping(value="/admin/product_edit")
 	public ModelAndView editProducts(HttpServletRequest request){	

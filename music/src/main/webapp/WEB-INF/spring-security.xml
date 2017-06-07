@@ -12,18 +12,23 @@
 	<security:http auto-config="true">
 		<security:intercept-url pattern="/admin/**"
 			access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/login"
-			access="permitAll" />
+		<security:intercept-url pattern="/login" access="permitAll" />
+		<security:intercept-url pattern="/webapp/resources/*" access="permitAll" />
 		<security:intercept-url pattern="/user/**"
 			access="hasRole('USER')" />
-		<security:form-login username-parameter="username"
-			password-parameter="password" authentication-failure-forward-url="/noAccessPage" />		
+		<security:form-login  
+                     login-page="/login"
+                     login-processing-url="/j_spring_security_check" 
+                     username-parameter="j_username"                 
+                     password-parameter="j_password" 
+                     authentication-success-forward-url="/userlogged"
+                     authentication-failure-forward-url="/noAccessPage"  />   
+                      	
 		<security:access-denied-handler
-			error-page="/noAccessPage" />
-		<security:csrf disabled="true" />
-
-		<security:logout logout-url="/logout"
-			invalidate-session="true" logout-success-url="/" />
+                     error-page="/noAccessPage" />
+              <security:csrf disabled="true"/>
+ 
+              <security:logout logout-url="/logout" invalidate-session="true" logout-success-url="/" />
 	</security:http>
 	<security:authentication-manager>
 		<security:authentication-provider>

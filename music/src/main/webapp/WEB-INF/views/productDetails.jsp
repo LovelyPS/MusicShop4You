@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,23 +41,35 @@
 					<div class="product-price">${product.p_price}</div>
 					<div class="product-stock">In Stock</div>
 					<hr>
-					<form action="addCart">
-					Enter Quantity : <input type="number" name="q"/><input type="hidden" name="id" value="${product.p_id}"/>
-					<div class="btn-group cart">
-					   
-						<button type="submit" class="btn btn-success">
-							Add to cart 
-						</button>
-						
-					</div>
-					</form>
+					<c:if test="${pageContext.request.userPrincipal.name == null }">
 					<div class="btn-group wishlist">
-					<a href="viewCart">
-						<button type="button" class="btn btn-danger">
-							View cart 
-						</button>
-						</a>
-					</div>
+											<form action="signin">
+											<%-- <input type="hidden" name="id" value="${product.p_id}"/> --%>
+											<button type="submit" class="btn btn-danger">
+											Sign in for Add to Cart
+											</button>
+											</form>
+											</div>
+					</c:if>
+					
+						<c:if test="${pageContext.request.userPrincipal.name != null }">	
+											<form action="addCart" method="post">
+											Enter Quantity : <input type="number" name="q" required/><input type="hidden" name="id" value="${product.p_id}"/>
+											<div class="btn-group cart">
+					    					<button type="submit" class="btn btn-success">Add to cart </button>
+					    					</div>
+					    					</form>
+					    					<div class="btn-group wishlist">
+											<form action="viewCart">
+											<button type="submit" class="btn btn-danger">
+											View cart 
+											</button>
+											</form>
+											</div>
+				
+						</c:if>
+					
+					
 				</div>
 			</div> 
 		</div>

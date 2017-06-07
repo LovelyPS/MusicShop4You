@@ -59,10 +59,10 @@
                          <tr>
                         
                            <td>${p.product.p_name}</td>        
-                           <td>${p.c_price}</td> 
+                           <td><i class="fa fa-inr" aria-hidden="true"></i>${p.c_price}</td> 
                            <td>${p.c_quantity }</td>
                            <td><img src="./resources/product/${p.product.p_image}"  class="img-rounded" alt="${p.product.p_name }" width="75px" height="50px"/></td>         
-                           <td>${p.c_price*p.c_quantity}</td>
+                           <td><i class="fa fa-inr" aria-hidden="true"></i>${p.c_price*p.c_quantity}</td>
                             <td>
                              <a class="btn btn-danger" href="./cart_delete?id=${p.cart_id}"><em class="fa fa-trash"></em></a>
                            </td>
@@ -84,13 +84,14 @@
 						</button>
 						</a>
 					</div>
-					 <div class="btn-group cart">
-					<a href="customerDetails?tot=<c:out value="${tot}"/>">
-						<button type="button" class="btn btn-danger">
+						<form action="customerDetails" method="post">
+					 <div class="btn-group cart">	
+				        <input type="hidden" value="${tot}" name="tot">
+						<button type="submit" class="btn btn-danger">
 							Check Out
-						</button>
-						</a>
+						 </button>				
 					</div>
+					</form>
              </div>
              
            </div>
@@ -99,6 +100,6 @@
 	</div>
     
 
-
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -7,6 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Access denied</h1>
+<div class="container">
+<jsp:include page="header.jsp"></jsp:include>
+<h1 align="center" style="color: red;">Invalid url or password</h1>
+
+<br/><br/><br/>
+<div align="center">
+							<a href="signin"><img alt="" src="./resources/images/icon.png" width="20" height="20" /><br />Sign In</a>
+							<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div>
+					<jsp:include page="footer.jsp"></jsp:include>
+					</div>
+					
 </body>
 </html>

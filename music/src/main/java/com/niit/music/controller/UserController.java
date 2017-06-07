@@ -1,5 +1,7 @@
 package com.niit.music.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +21,31 @@ public class UserController
 {
 	@Autowired
 	UserDAO userDao;
+	
 	@Autowired
 	CategoryDAO cDao;
+	
 	
 	@RequestMapping(value="/registration",method=RequestMethod.POST)
 	public ModelAndView reg(HttpServletRequest request)
 	{
         String mail=request.getParameter("mail");
+        ModelAndView mv = new ModelAndView("signin");  
+        List<User> ulist=userDao.getAllUsers();
+        int flag=1;
+        for(int i=0;i<ulist.size();i++)
+        {
+        	if(mail.equals(ulist.get(i).getU_mail()))
+        	{
+        		      		
+        		mv.addObject("msg","Registration Failed.....Email Id Already Exists.........." );       		
+
+        		flag=0;
+        	
+        	}
+        }
+        if(flag==1)
+        {
         String name=request.getParameter("name");
 		String add=request.getParameter("address");
 		int age=Integer.parseInt(request.getParameter("age"));
@@ -40,12 +60,34 @@ public class UserController
 		u.setPhone(phone);
 		u.setRole("USER");
 		u.setU_password(pass);
-		userDao.persist(u);
+		userDao.persist(u);	
+		mv.addObject("msg","Successfully Registered..You Can Login Now.." );		
+        }
+        return mv;
+	}
+	@RequestMapping("/signin")
+	public ModelAndView signin(HttpServletRequest request)
+	{
 		
-		ModelAndView mv = new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("signin");
 		
 		return mv;
 	}
+	@RequestMapping("/signUp")
+	public ModelAndView signUp()
+	{
+		
+		ModelAndView mv = new ModelAndView("signUp");
+		
+		
+		return mv;
+	}
+	
+	@RequestMapping("/userlogged")
+	public String userLogged() { 
+		return "redirect:/";	
+	}
+	
 	@ModelAttribute
 	public void addAttributes(Model model)
 	{

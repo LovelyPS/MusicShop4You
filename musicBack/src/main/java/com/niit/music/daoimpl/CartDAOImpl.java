@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.niit.music.dao.CartDAO;
 import com.niit.music.model.Cart;
+import com.niit.music.model.Product;
 
 @Repository
 public class CartDAOImpl implements CartDAO 
@@ -30,8 +31,15 @@ public class CartDAOImpl implements CartDAO
 
 	}
 
-	public void update(Cart p) {
-		// TODO Auto-generated method stub
+	public void update(Cart p) 
+	{
+		Session s=sessionFactory.openSession();
+		s.beginTransaction();
+		s.update(p);
+		s.getTransaction().commit();
+		s.close();
+
+	
 
 	}
 
@@ -62,8 +70,20 @@ public class CartDAOImpl implements CartDAO
 	}
 
 	public void deleteAll() {
-		// TODO Auto-generated method stub
+		Session s=sessionFactory.openSession();
+		s.beginTransaction();
+		
+		s.getTransaction().commit();
+		s.close();
 
+	}
+
+	public List<Cart> checkExistance(int pid) 
+	{
+        Session s=sessionFactory.openSession();		
+        List<Cart> results =s.createQuery("from Cart where p_id="+pid).list();		
+		s.close();
+		return results;
 	}
 
 }
