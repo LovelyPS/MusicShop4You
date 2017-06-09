@@ -59,6 +59,7 @@ public class UserController
 		u.setAge(age);
 		u.setPhone(phone);
 		u.setRole("USER");
+		u.setEnabled(true);
 		u.setU_password(pass);
 		userDao.persist(u);	
 		mv.addObject("msg","Successfully Registered..You Can Login Now.." );		
@@ -73,6 +74,7 @@ public class UserController
 		
 		return mv;
 	}
+	
 	@RequestMapping("/signUp")
 	public ModelAndView signUp()
 	{

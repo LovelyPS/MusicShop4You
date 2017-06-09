@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.music.cart.CartOrder;
 import com.niit.music.dao.CartDAO;
 import com.niit.music.dao.CategoryDAO;
 import com.niit.music.dao.ProductDAO;
@@ -96,6 +97,29 @@ public class cartController
 		mv.addObject("tot", tot);
 		return mv;
 	}
+	@RequestMapping("/thank")
+	public ModelAndView thankyou()
+	{		
+		
+		ModelAndView mv=new ModelAndView("success");	
+		cdao.deleteAll();
+		return mv;
+	}
+	
+	/*@RequestMapping(value="/checkout")
+	public String checkout()
+	{
+		return "redirect:/checkout";
+	}*/
+	
+	@RequestMapping("/placeOrder")
+	public ModelAndView placeOrder(HttpServletRequest request){
+		ModelAndView mv=new ModelAndView("checkout");
+		CartOrder order=new CartOrder();
+		
+		
+		return mv;
+	}
 	@RequestMapping("/invoice")
 	public ModelAndView invoice(HttpServletRequest request)
 	{
@@ -110,7 +134,7 @@ public class cartController
 		mv.addObject("phone", phone);
 		mv.addObject("email", email);
 		mv.addObject("tot", tot);
-		cdao.deleteAll();
+		
 	
 		return mv;
 	}

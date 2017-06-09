@@ -70,12 +70,7 @@ public class CartDAOImpl implements CartDAO
 	}
 
 	public void deleteAll() {
-		Session s=sessionFactory.openSession();
-		s.beginTransaction();
-		
-		s.getTransaction().commit();
-		s.close();
-
+		sessionFactory.openSession().createQuery("delete from Cart").executeUpdate();
 	}
 
 	public List<Cart> checkExistance(int pid) 

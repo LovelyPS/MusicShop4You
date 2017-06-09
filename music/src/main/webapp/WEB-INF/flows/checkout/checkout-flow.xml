@@ -3,19 +3,20 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-    <var name="order" class="com.emusicstore.model.CustomerOrder" />
+     <!-- <var name="order" class="com.emusicstore.model.CustomerOrder" /> --> 
+    <!--  <var name="list" class="java.util.List<com.niit.music.Cart>" /> -->
 
-    <action-state id="addCartToOrder">
+  <!--  <action-state id="addCartToOrder"> 
         <evaluate expression="cartDaoImpl.validate(requestParameters.cartId)" result="order.cart" />
         <transition to="InvalidCartWarning" on-exception="java.io.IOException" />
         <transition to="collectCustomerInfo" />
-    </action-state>
+    </action-state> 
 
-    <view-state id="collectCustomerInfo" view="collectCustomerInfo.jsp" model="order">
+    <view-state id="collectCustomerInfo" view="collectCustomerInfo.jsp">
         <transition on="customerInfoCollected" to="collectShippingDetail" />
     </view-state>
 
-    <view-state id="collectShippingDetail" view="collectShippingDetail.jsp" model="order">
+    <view-state id="collectShippingDetail" view="collectShippingDetail.jsp">
         <transition on="shippingDetailCollected" to="orderConfirmation" />
         <transition on="backToCollectCustomerInfo" to="collectCustomerInfo" />
     </view-state>
@@ -33,16 +34,29 @@
     <view-state id="thankCustomer" model="order">
         <transition to="endState" />
     </view-state>
-
-    <end-state id="endState" />
+    
+   <end-state id="endState" />
 
     <view-state id="invalidCartWarning">
         <transition to="endState" />
     </view-state>
-
-    <end-state id="cancelCheckout" view="checkOutCancelled.jsp" />
+ -->
+ 
+     
+        <view-state id="registration" view="registration.jsp">
+            <transition on="registrationCollected" to="showInvoice"/>            
+        </view-state>
+        <view-state id="showInvoice" view="invoice.jsp">
+            <transition on="orderConfirm" to="sayThankyou"/>            
+        </view-state>
+        <view-state id="sayThankyou" view="success.jsp">
+                <transition to="endState" />       
+        </view-state>
+       
+        
+    <end-state id="endState" view="success.jsp" />
 
     <global-transitions>
-        <transition on="cancel" to="cancelCheckout" />
+        <transition on="cancel" to="endState" />
     </global-transitions>
 </flow>

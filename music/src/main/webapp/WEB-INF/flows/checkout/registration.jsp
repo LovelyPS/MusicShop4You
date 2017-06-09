@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page isELIgnored ="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -100,10 +101,10 @@ function check()
 
 </head>
 <body>
-<jsp:include page="header.jsp"/>
     <div class="container">
 
-    <form class="well form-horizontal" action="invoice" method="post"  id="contact_form">
+    <form class="well form-horizontal" action="${flowExecutionUrl}&_eventId_registrationCollected" method="post"  id="contact_form">
+   <!--  <form class="well form-horizontal" id="contact_form"> -->
 <fieldset>
 
 <!-- Form Name -->
@@ -161,16 +162,20 @@ function check()
 <!-- Button -->
 <div class="form-group">
  
-  <div class="col-md-4"><br>
+  <!-- <div class="col-md-4"><br>
     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" onlick="check()" value="Confirm">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
-  </div>
+  </div> -->
 </div>
+		<input type="hidden" name="_flowExecutionKey" />
+        <br><br>
+        <input type="submit" value="Next" class="btn btn-default" name="_eventId_registrationCollected" />
+        <button class="btn btn-default" name="_eventId_cancel">Cancel</button>
 
 </fieldset>
 </form>
 </div>
     </div>
-    <jsp:include page="footer.jsp"/>
+    
     <!-- /.container -->
 </body>
 </html>

@@ -17,7 +17,6 @@
    
 </head>
 <body>
-<jsp:include page="header.jsp"/>
 
 <br/>
 <div class="container">
@@ -26,12 +25,17 @@
 <h1>Phone : ${phone}</h1>
 <h1>Email : ${email}</h1>
 <h1>Total : ${tot}</h1>
-<a href="thank"><button>Confirm</button></a>
+<!-- <a href="thank"><button>Confirm</button></a> -->
 
-</div>
-	
+<form  action="${flowExecutionUrl}&_eventId_orderConfirm" method="post">
+		<input type="hidden" name="_flowExecutionKey" />
+        <br><br>
+        <input type="submit" value="Next" class="btn btn-default" name="_eventId_orderConfirm" />
+        <button class="btn btn-default" name="_eventId_cancel">Cancel</button>
+
+
+	</form>
     
-<jsp:include page="footer.jsp"/>
-
+</div>
 </body>
 </html>

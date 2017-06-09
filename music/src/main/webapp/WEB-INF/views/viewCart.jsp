@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
      
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -95,6 +97,13 @@
              </div>
              
            </div>
+           <!-- <a href="checkout">
+						<button type="button" class="btn btn-danger">
+							CHECK OUT
+						</button>
+			</a> -->
+			<a href="<spring:url value="/checkout?tot=${tot}"/>" class="btn btn-success pull-right">
+<span class="glyphicon-shopping-cart glyphicon"></span>Check out</a>
 
 </div></div>
 	</div>
